@@ -637,10 +637,10 @@ footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
   function walk(m){return m===0?'':m>=1500?'차로 이동':'걸어서 약 '+Math.max(1,Math.round(m/80))+'분'}
   document.getElementById('whereList').innerHTML=where.map(function(w){
     return '<div class="where-block"><h3>'+w[0]+' <span class="muted small">'+w[1]+'</span></h3>'+
-      '<figure class="mapshot"><img src="'+w[2]+'" alt="'+w[0]+' 주변 지도: 숙소, 마트, 다이소, 편의점, 역 위치" loading="lazy"><figcaption>© OpenStreetMap contributors</figcaption></figure>'+
+      '<figure class="mapshot"><a href="'+w[2]+'" target="_blank" rel="noopener"><img src="'+w[2]+'" alt="'+w[0]+' 주변 지도: 숙소, 마트, 다이소, 편의점, 역 위치" loading="lazy"></a><figcaption>지도를 누르면 크게 볼 수 있어요 · © OpenStreetMap contributors</figcaption></figure>'+
       '<ul class="poi">'+w[3].map(function(p){
         return '<li class="k-'+p[0]+'"><i></i><span class="kind">'+KIND[p[0]]+'</span><a href="'+gm(p[3],p[4])+'" target="_blank" rel="noopener">'+p[1]+'</a>'+
-          '<span class="num d">'+dist(p[2])+'</span><span class="w">'+walk(p[2])+(p[5]?' · '+p[5]:'')+'</span></li>';
+          '<span class="num d">'+dist(p[2])+'</span><span class="w">'+[walk(p[2]),p[5]].filter(Boolean).join(' · ')+'</span></li>';
       }).join('')+'</ul></div>';
   }).join('');
 
