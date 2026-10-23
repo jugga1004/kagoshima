@@ -100,6 +100,8 @@ ol.tl .d p{margin:2px 0 0;font-size:13.5px;color:var(--muted)}
 .bar{flex:1;height:6px;background:var(--line);border-radius:99px;overflow:hidden}
 .bar i{display:block;height:100%;width:0;background:var(--ok);transition:width .2s}
 .reset{font:inherit;font-size:13px;background:none;border:1px solid var(--line);color:var(--muted);border-radius:6px;padding:3px 10px;cursor:pointer}
+.reset.armed{border-color:var(--lava);color:var(--lava)}
+.saved.bad{color:var(--lava)}
 
 /* 표 */
 .table-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px}
@@ -302,6 +304,7 @@ footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
 <section id="pack">
   <div class="sec-head"><h2>준비물</h2><span class="muted small">체크하면 이 기기에만 저장됩니다. 엄마 두 분은 각자 휴대폰에서 체크하세요.</span></div>
   <div class="progress"><span class="num" id="packCount">0 / 0</span><div class="bar"><i id="packBar"></i></div><button class="reset" id="packReset" type="button">초기화</button></div>
+  <span class="small muted saved" id="packSaved"></span>
   <div class="checks" id="checks"></div>
 </section>
 
@@ -383,9 +386,31 @@ footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
     '아이들':['상비약: 해열제(아이용)·멀미약·밴드·소화제','체온계','차·비행기용 간식, 보드게임·색칠놀이','아이들 손목 연락처 메모','작은 배낭 (각자 물병·간식)'],
     '전자·기타':['110V 돼지코 2~3개 + 멀티탭','보조배터리 (기내 반입만)','지퍼백·접이식 장바구니','캐리어 여유 공간 (기념품)']
   };
-  var state={};
-  try{state=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){state={}}
-  function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
+  // 체크 상태는 localStorage와 쿠키 두 곳에 저장 (한쪽이 막히거나 지워져도 복구)
+  var ALL=[];Object.keys(pack).forEach(function(g){ALL=ALL.concat(pack[g])});
+  var COOKIE='kgsPack';
+  function readCookie(){var m=document.cookie.match(new RegExp('(?:^|; )'+COOKIE+'=([^;]*)'));return m?decodeURIComponent(m[1]):null}
+  function load(){
+    var s=null;
+    try{var raw=localStorage.getItem(KEY);if(raw)s=JSON.parse(raw)}catch(e){}
+    if(!s||!Object.keys(s).length){
+      var c=readCookie();
+      if(c){s={};c.split('.').forEach(function(i){var it=ALL[+i];if(it)s[it]=1})}
+    }
+    return s||{};
+  }
+  var state=load(),saved={ls:false,ck:false};
+  function save(){
+    try{localStorage.setItem(KEY,JSON.stringify(state));saved.ls=localStorage.getItem(KEY)!==null}catch(e){saved.ls=false}
+    try{
+      var ids=ALL.map(function(it,i){return state[it]?i:-1}).filter(function(i){return i>=0}).join('.');
+      document.cookie=COOKIE+'='+encodeURIComponent(ids)+'; max-age=7776000; path=/; SameSite=Lax';
+      saved.ck=readCookie()!==null;
+    }catch(e){saved.ck=false}
+    var el=document.getElementById('packSaved');
+    if(el)el.textContent=(saved.ls||saved.ck)?'이 기기에 저장됨':'저장 안 됨 · 시크릿 모드면 일반 창으로 열어주세요';
+    if(el)el.classList.toggle('bad',!(saved.ls||saved.ck));
+  }
   var host=document.getElementById('checks'), total=0, idx=0;
   Object.keys(pack).forEach(function(g){
     var box=document.createElement('div');box.className='group';
@@ -407,10 +432,18 @@ footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
     document.getElementById('packCount').textContent=n+' / '+total;
     document.getElementById('packBar').style.width=(n/total*100)+'%';
   }
-  document.getElementById('packReset').addEventListener('click',function(){
+  // 초기화는 두 번 눌러야 실행 (실수로 다 지우지 않게)
+  var resetBtn=document.getElementById('packReset'),armed=null;
+  resetBtn.addEventListener('click',function(){
+    if(!armed){
+      resetBtn.textContent='한 번 더 누르면 전부 해제';resetBtn.classList.add('armed');
+      armed=setTimeout(function(){armed=null;resetBtn.textContent='초기화';resetBtn.classList.remove('armed')},3000);
+      return;
+    }
+    clearTimeout(armed);armed=null;resetBtn.textContent='초기화';resetBtn.classList.remove('armed');
     state={};save();host.querySelectorAll('input').forEach(function(c){c.checked=false;c.parentNode.classList.remove('done')});prog();
   });
-  prog();
+  prog();save();
 
   // 비용 (엔, 1인 기준): [항목, 근거, 성인[최소,최대], 초등[최소,최대], 미취학[최소,최대]]
   var cost=[
