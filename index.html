@@ -124,6 +124,22 @@ tr.sub td{color:var(--muted);font-size:13px}
 .card .meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
 .area{display:grid;gap:10px}
 .area>h3{color:var(--sea)}
+.where{display:grid;gap:28px}
+.where-block{display:grid;gap:10px}
+.mapshot{margin:0;display:grid;gap:2px}
+.mapshot img{width:100%;border-radius:10px;border:1px solid var(--line);aspect-ratio:4/3;object-fit:cover}
+.mapshot figcaption{font-size:11px;color:var(--muted);text-align:right}
+ul.poi{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+ul.poi li{display:grid;grid-template-columns:12px 64px 1fr auto;align-items:baseline;gap:2px 8px;padding:8px 14px;border-bottom:1px dashed var(--line);font-size:14px}
+ul.poi li:last-child{border-bottom:0}
+ul.poi li i{width:10px;height:10px;border-radius:50%;align-self:center}
+ul.poi .kind{font-size:12px;color:var(--muted)}
+ul.poi a{font-weight:600;text-decoration:none;color:var(--ink);min-width:0}
+ul.poi .d{font-size:13px;color:var(--muted);text-align:right}
+ul.poi .w{grid-column:3 / 5;font-size:12.5px;color:var(--muted)}
+ul.poi .w:empty{display:none}
+.k-home i{background:#d13b1f}.k-mart i{background:#2f7a4f}.k-daiso i{background:#e08a00}.k-conv i{background:#1b6a86}.k-station i{background:var(--ink)}.k-bus i{background:#7a4fd1}
+.k-home a{color:var(--lava)}
 .meal{display:grid;gap:6px}
 dl.menu{display:grid;grid-template-columns:auto 1fr;gap:2px 8px;margin:4px 0 0;font-size:13px}
 dl.menu dt{color:var(--muted);font-size:12px;padding-top:1px}
@@ -173,7 +189,7 @@ footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
 </header>
 
 <nav class="tabs" aria-label="섹션">
-  <a href="#plan">일정</a><a href="#pack">준비물</a><a href="#cost">예상 비용</a><a href="#shop">쇼핑</a><a href="#eat">맛집</a><a href="#care">주의사항</a>
+  <a href="#plan">일정</a><a href="#where">위치</a><a href="#pack">준비물</a><a href="#cost">예상 비용</a><a href="#shop">쇼핑</a><a href="#eat">맛집</a><a href="#care">주의사항</a>
 </nav>
 
 <!-- 일정 -->
@@ -193,7 +209,7 @@ footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
       <li><span class="t">17:00</span><div class="d">렌터카 영업소 셔틀 → 차량 수령<p>6명 + 캐리어면 7~8인승 미니밴. 주니어시트 장착 확인, ETC 카드 대여 여부 결정.</p></div></li>
       <li><span class="t">17:45</span><div class="d">고쿠부로 이동 (공항에서 차로 약 15분) → 체크인·짐 풀기<p>체크인 15:00부터, 비대면 체크인. 입실 방법은 호스트가 이메일로 보내주니 출발 전 확인하세요.</p></div></li>
       <li><span class="t">18:30</span><div class="d">저녁</div></li>
-      <li><span class="t">19:45</span><div class="d">이온 · MEGA 돈키호테에서 아침거리 · 간식 사기<p>숙소에서 차로 5분 안팎. 숙소 주변엔 로손·패밀리마트도 가까이 있습니다.</p></div></li>
+      <li><span class="t">19:45</span><div class="d">아침거리 · 간식 사기<p>숙소에서 걸어서 5~7분 거리에 타이요 마트·다이소, 패밀리마트는 340m. 아래 '위치정보' 지도 참고.</p></div></li>
       <li><span class="t">20:30</span><div class="d">숙소 전용 천연온천 · 휴식</div></li>
     </ol>
     <div class="note tip"><b>고쿠부 숙소 (1박)</b>
@@ -298,6 +314,13 @@ footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
       </ul>
     </div>
   </article>
+</section>
+
+<!-- 위치정보 -->
+<section id="where">
+  <div class="sec-head"><h2>위치정보</h2><span class="muted small">숙소 기준 직선거리. 걸어서는 1분에 약 80m로 잡으세요(아이 동반·캐리어면 더 걸림). 이름을 누르면 구글 지도로 열립니다.</span></div>
+  <div class="where" id="whereList"></div>
+  <p class="small muted">지도·가게 위치: © OpenStreetMap contributors (2026-10-23 조회). 영업시간·폐업 여부는 방문 전 지도 앱에서 확인하세요.</p>
 </section>
 
 <!-- 준비물 -->
@@ -512,7 +535,7 @@ footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
   var eat=[
     ['기리시마·고쿠부 (10/31~11/1)',[
       ['저녁',[
-        ['スシロー (스시로)','スシロー 隼人','숙소 근처 이온 하야토 상권. 터치패널 주문이라 말이 안 통해도 OK. 토요일이라 앱 대기 등록 추천.','아이 OK','연어·참치 초밥, 감자튀김, 푸딩','1인 1,000~2,000엔',false],
+        ['スシロー (스시로)','スシロー 隼人','숙소에서 차로 10분 안팎(이온 하야토 상권). 터치패널 주문이라 말이 안 통해도 OK. 토요일이라 앱 대기 등록 추천.','아이 OK','연어·참치 초밥, 감자튀김, 푸딩','1인 1,000~2,000엔',false],
         ['くら寿司 (쿠라스시)','くら寿司 国分隼人','스시로 바로 옆. 접시 5개 넣으면 뽑기(비쿠라퐁).','아이 OK','초밥 + 뽑기용 접시 모으기, 우동','1인 1,000~2,000엔',false],
         ['ジョイフル (조이풀)','ジョイフル 国分','규슈 패밀리레스토랑 체인. 드링크바, 늦게까지 영업.','늦게까지 영업','함박스테이크, 키즈 플레이트','1인 700~1,500엔',false],
         ['すまいる (스마일)','霧島市 すまいる 和食','공항에서 차로 약 10분. 좌식·의자석 70석 규모.','흑돼지','흑돼지 철판구이 정식(黒豚焼肉膳)','1인 1,500~2,500엔',false]
@@ -581,6 +604,45 @@ footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
       });
     }).catch(function(){});
   })();
+
+  // 위치정보: [숙소명, 기간, 지도 이미지, [[종류, 이름, 거리(m), 위도, 경도, 메모]...]]
+  var KIND={home:'숙소',mart:'마트',daiso:'생활용품',conv:'편의점',station:'역',bus:'버스'};
+  var where=[
+    ['고쿠부 숙소','10/31 1박','img/map-kokubu.jpg',[
+      ['home','숙소',0,31.760496,130.773605,'전용 천연온천 독채'],
+      ['conv','패밀리마트',340,31.7601226,130.7771465,''],
+      ['mart','타이요 (슈퍼)',520,31.763334,130.7780255,'아침거리·과일·음료'],
+      ['mart','다이와 (슈퍼)',550,31.7640556,130.7776196,''],
+      ['daiso','다이소',580,31.7643151,130.7777658,'타이요 바로 옆'],
+      ['conv','세븐일레븐',670,31.7647314,130.778608,''],
+      ['conv','세븐일레븐 (남쪽)',860,31.7527722,130.7739838,''],
+      ['conv','로손',1070,31.7509474,130.7726174,''],
+      ['station','JR 국분역',2100,31.7436752,130.7634412,'차로 약 10분']
+    ]],
+    ['중앙역 숙소','11/1~11/4 3박','img/map-chuo.jpg',[
+      ['home','숙소',0,31.581148,130.540726,'역 서쪽 출구에서 걸어서 3~4분'],
+      ['mart','타이요 (슈퍼)',20,31.581145,130.5409324,'숙소 바로 뒤, 밤 11시까지'],
+      ['daiso','세리아 (100엔숍)',30,31.581017,130.541007,'타이요와 같은 건물'],
+      ['conv','패밀리마트',190,31.5812421,130.538722,''],
+      ['daiso','돈키호테',210,31.5821741,130.5426513,'과자·기념품·생활용품'],
+      ['mart','야마카타야 스토어 (슈퍼)',260,31.5834687,130.5407658,'역 서쪽'],
+      ['conv','세븐일레븐',290,31.5826808,130.5432169,''],
+      ['station','JR 가고시마중앙역',300,31.5837134,130.5417909,'서쪽 출구 이용'],
+      ['daiso','다이소',310,31.5829365,130.5432309,'역 동쪽'],
+      ['bus','공항버스 터미널',440,31.5834284,130.5445031,'역 동쪽 출구 건너편']
+    ]]
+  ];
+  function gm(la,lo){return 'https://www.google.com/maps/search/?api=1&query='+la+','+lo}
+  function dist(m){return m===0?'':m>=1000?(m/1000).toFixed(1)+'km':m+'m'}
+  function walk(m){return m===0?'':m>=1500?'차로 이동':'걸어서 약 '+Math.max(1,Math.round(m/80))+'분'}
+  document.getElementById('whereList').innerHTML=where.map(function(w){
+    return '<div class="where-block"><h3>'+w[0]+' <span class="muted small">'+w[1]+'</span></h3>'+
+      '<figure class="mapshot"><img src="'+w[2]+'" alt="'+w[0]+' 주변 지도: 숙소, 마트, 다이소, 편의점, 역 위치" loading="lazy"><figcaption>© OpenStreetMap contributors</figcaption></figure>'+
+      '<ul class="poi">'+w[3].map(function(p){
+        return '<li class="k-'+p[0]+'"><i></i><span class="kind">'+KIND[p[0]]+'</span><a href="'+gm(p[3],p[4])+'" target="_blank" rel="noopener">'+p[1]+'</a>'+
+          '<span class="num d">'+dist(p[2])+'</span><span class="w">'+walk(p[2])+(p[5]?' · '+p[5]:'')+'</span></li>';
+      }).join('')+'</ul></div>';
+  }).join('');
 
   var ORDER={'점심':0,'저녁':1,'후식':2};
   document.getElementById('eatAreas').innerHTML=eat.map(function(a){
