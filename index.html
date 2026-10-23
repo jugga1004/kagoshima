@@ -109,12 +109,10 @@ th{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.04em}
 td.r,th.r{text-align:right;white-space:nowrap}
 tfoot td{font-weight:600;border-bottom:0}
 tr.sub td{color:var(--muted);font-size:13px}
-.rate{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:14px}
-.rate input{font:inherit;width:90px;padding:4px 8px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);font-family:var(--f-mono)}
-.total{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.total{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
 .total div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
 .total b{display:block;font-size:12px;color:var(--muted);font-weight:500}
-.total .big{font-family:var(--f-display);font-size:24px}
+.total .big{font-family:var(--f-display);font-size:21px}
 
 /* 쇼핑·맛집 */
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
@@ -267,16 +265,21 @@ footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
 
 <!-- 비용 -->
 <section id="cost">
-  <div class="sec-head"><h2>예상 비용</h2><span class="muted small">항공·숙소·렌트비 제외 · 6명 전체 기준 · 모두 추정치</span></div>
-  <div class="rate"><label for="rate">환율: 100엔 =</label><input id="rate" type="number" inputmode="decimal" value="900" step="5" min="500"><span>원</span><span class="small muted">기본값 900원은 예산 계산용 기준입니다. 환전할 때 실제 환율로 바꿔 보세요.</span></div>
+  <div class="sec-head"><h2>예상 비용</h2><span class="muted small">항공·숙소·렌트비 제외 · 1인 기준 · 단위 엔 · 모두 추정치</span></div>
   <div class="total" id="totals"></div>
   <div class="table-wrap"><table>
-    <thead><tr><th>항목</th><th>계산 근거</th><th class="r">엔(최소~최대)</th><th class="r">원</th></tr></thead>
+    <thead><tr><th>항목</th><th>계산 근거</th><th class="r">성인</th><th class="r">아동(초등)</th><th class="r">아동(7살·미취학)</th></tr></thead>
     <tbody id="costRows"></tbody>
-    <tfoot><tr><td colspan="2">합계</td><td class="r num" id="sumYen"></td><td class="r num" id="sumWon"></td></tr></tfoot>
+    <tfoot><tr><td colspan="2">1인 합계</td><td class="r num" id="sumA"></td><td class="r num" id="sumC"></td><td class="r num" id="sumP"></td></tr></tfoot>
+  </table></div>
+  <h3>공동 비용 (차량·기타)</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>항목</th><th>계산 근거</th><th class="r">엔</th></tr></thead>
+    <tbody id="sharedRows"></tbody>
+    <tfoot><tr><td colspan="2">공동 합계</td><td class="r num" id="sumS"></td></tr></tfoot>
   </table></div>
   <div class="note small">
-    요금 기준: 사쿠라지마 페리 중학생 이상 250엔·초등 130엔, 차량 4~5m 2,350엔(운전자 1명 포함, 2024년 7월 개정) · 센간엔 어른 1,600엔·소인 800엔 · CUTE 2일권 어른 2,100엔·어린이 1,050엔(2026년 8월 개정) · 공항 리무진 어른 1,400~1,500엔·어린이 700~750엔. 7살은 미취학으로 보고 무료로 계산했습니다(시설마다 "어른 1명당 미취학 1명 무료" 조건이 많음). 과학관 입장료는 확인하지 못해 범위로 넣었습니다.
+    요금 기준: 사쿠라지마 페리 중학생 이상 250엔·초등 130엔, 차량 4~5m 2,350엔(운전자 1명 요금 포함이라 성인 1명분은 차량비에 들어감, 2024년 7월 개정) · 센간엔 어른 1,600엔·소인 800엔 · CUTE 2일권 어른 2,100엔·어린이 1,050엔(2026년 8월 개정) · 공항 리무진 어른 1,400~1,500엔·어린이 700~750엔. 7살은 미취학으로 보고 교통·입장을 무료로 계산했습니다("어른 1명당 미취학 1명 무료" 조건이 많음). 만 나이로 초등학생 요금이 적용되면 '아동(초등)' 칸을 보세요. 과학관 입장료는 확인하지 못해 범위로 넣었습니다.
   </div>
 </section>
 
@@ -366,45 +369,50 @@ footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
   });
   prog();
 
-  // 비용 (엔, 6명 전체)
+  // 비용 (엔, 1인 기준): [항목, 근거, 성인[최소,최대], 초등[최소,최대], 미취학[최소,최대]]
   var cost=[
-    ['아침 ×4','편의점·카페 기준 (숙소 조식 포함이면 0)',10000,16000],
-    ['점심 ×4','6명 6,000~10,000엔/회',24000,40000],
-    ['저녁 ×3','6명 12,000~18,000엔/회',36000,54000],
-    ['흑돼지 저녁 ×1','샤브샤브·돈카츠 전문점',20000,30000],
-    ['간식·음료','시로쿠마, 소프트아이스, 음료 5일',10000,18000],
-    ['센간엔','어른 1,600×2 + 소인 800×3',5600,5600],
-    ['과학관 등 기타 입장','과학관 요금 확인 필요',1500,3500],
-    ['사쿠라지마 페리','차량 2,350(운전자 포함) + 어른 250 + 초등 130×3',2990,2990],
-    ['CUTE 2일권','어른 2,100×2 + 어린이 1,050×3',7350,7350],
-    ['공항 리무진 (귀국)','어른 1,400~1,500×2 + 어린이 700~750×3',4900,5250],
+    ['아침 ×4','편의점·카페 (숙소 조식 포함이면 0)',[2400,4000],[1600,2800],[1600,2800]],
+    ['점심 ×4','성인 1,200~2,000 · 아동 800~1,300엔/회',[4800,8000],[3200,5200],[3200,5200]],
+    ['저녁 ×3','성인 2,000~3,000 · 아동 1,200~2,000엔/회',[6000,9000],[3600,6000],[3600,6000]],
+    ['흑돼지 저녁 ×1','샤브샤브·돈카츠 전문점',[4000,6000],[2000,3000],[2000,3000]],
+    ['간식·음료','시로쿠마, 소프트아이스, 음료 5일',[1500,3000],[1500,3000],[1500,3000]],
+    ['센간엔','어른 1,600 · 소인 800',[1600,1600],[800,800],[0,0]],
+    ['과학관 등 기타 입장','과학관 요금 확인 필요',[300,800],[100,500],[0,300]],
+    ['사쿠라지마 페리 (사람)','중학생 이상 250 · 초등 130',[250,250],[130,130],[0,0]],
+    ['CUTE 2일권','어른 2,100 · 어린이 1,050',[2100,2100],[1050,1050],[0,0]],
+    ['공항 리무진 (귀국)','어른 1,400~1,500 · 어린이 700~750',[1400,1500],[700,750],[0,0]],
+    ['기념품·용돈','선택 예비비',[5000,10000],[2000,5000],[2000,5000]]
+  ];
+  var shared=[
+    ['사쿠라지마 페리 (차량)','4~5m 차량, 운전자 1명 요금 포함',2350,2350],
     ['주유·주차','약 150km 주행, 숙소 주차 1박',3000,6000],
     ['편도 반납 수수료','같은 현 안이면 무료인 곳 많음 · 확인 필요',0,3300],
-    ['기념품·쇼핑','선택 예비비',20000,40000],
-    ['기타','코인로커, 편의점, 비상금',5000,10000]
+    ['기타','코인로커, 비상금',3000,6000]
   ];
-  var rateEl=document.getElementById('rate');
+  var PEOPLE=[2,3,1]; // 성인, 초등, 미취학
   function fmt(n){return Math.round(n).toLocaleString('ko-KR')}
-  function won(y,r){return y*r/100}
-  function man(n){return (Math.round(n/10000)).toLocaleString('ko-KR')+'만'}
-  function render(){
-    var r=parseFloat(rateEl.value);if(!(r>0))r=900;
-    var lo=0,hi=0,rows='';
-    cost.forEach(function(c){
-      lo+=c[2];hi+=c[3];
-      var y=c[2]===c[3]?fmt(c[2]):fmt(c[2])+'~'+fmt(c[3]);
-      var w=c[2]===c[3]?fmt(won(c[2],r)):fmt(won(c[2],r))+'~'+fmt(won(c[3],r));
-      rows+='<tr><td>'+c[0]+'</td><td class="small muted">'+c[1]+'</td><td class="r num">'+y+'</td><td class="r num">'+w+'</td></tr>';
-    });
-    document.getElementById('costRows').innerHTML=rows;
-    document.getElementById('sumYen').textContent=fmt(lo)+'~'+fmt(hi);
-    document.getElementById('sumWon').textContent=fmt(won(lo,r))+'~'+fmt(won(hi,r));
-    document.getElementById('totals').innerHTML=
-      '<div><b>6명 합계 (엔)</b><span class="big num">'+fmt(lo)+'~'+fmt(hi)+'</span></div>'+
-      '<div><b>6명 합계 (원)</b><span class="big">'+man(won(lo,r))+'~'+man(won(hi,r))+'원</span></div>'+
-      '<div><b>엄마 1인당 부담 (반씩)</b><span class="big">'+man(won(lo,r)/2)+'~'+man(won(hi,r)/2)+'원</span></div>';
-  }
-  rateEl.addEventListener('input',render);render();
+  function rng(lo,hi){return lo===hi?fmt(lo):fmt(lo)+'~'+fmt(hi)}
+  var sum=[[0,0],[0,0],[0,0]],rows='';
+  cost.forEach(function(c){
+    var cells='';
+    for(var k=0;k<3;k++){var v=c[2+k];sum[k][0]+=v[0];sum[k][1]+=v[1];cells+='<td class="r num">'+(v[1]===0?'무료':rng(v[0],v[1]))+'</td>';}
+    rows+='<tr><td>'+c[0]+'</td><td class="small muted">'+c[1]+'</td>'+cells+'</tr>';
+  });
+  document.getElementById('costRows').innerHTML=rows;
+  document.getElementById('sumA').textContent=rng(sum[0][0],sum[0][1]);
+  document.getElementById('sumC').textContent=rng(sum[1][0],sum[1][1]);
+  document.getElementById('sumP').textContent=rng(sum[2][0],sum[2][1]);
+  var sLo=0,sHi=0,sRows='';
+  shared.forEach(function(s){sLo+=s[2];sHi+=s[3];sRows+='<tr><td>'+s[0]+'</td><td class="small muted">'+s[1]+'</td><td class="r num">'+rng(s[2],s[3])+'</td></tr>';});
+  document.getElementById('sharedRows').innerHTML=sRows;
+  document.getElementById('sumS').textContent=rng(sLo,sHi);
+  var fLo=sLo,fHi=sHi;
+  for(var k=0;k<3;k++){fLo+=sum[k][0]*PEOPLE[k];fHi+=sum[k][1]*PEOPLE[k];}
+  document.getElementById('totals').innerHTML=
+    '<div><b>성인 1인</b><span class="big num">'+rng(sum[0][0],sum[0][1])+'</span></div>'+
+    '<div><b>아동(초등) 1인</b><span class="big num">'+rng(sum[1][0],sum[1][1])+'</span></div>'+
+    '<div><b>아동(7살·미취학) 1인</b><span class="big num">'+rng(sum[2][0],sum[2][1])+'</span></div>'+
+    '<div><b>6명 전체 (공동 비용 포함)</b><span class="big num">'+rng(fLo,fHi)+'</span></div>';
 
   var shop=[
     ['가루칸 (かるかん)','참마로 만든 폭신한 찐 과자. 가고시마 대표 선물. 아카시야 본점이 유명.','회사·어른용'],
