@@ -223,7 +223,7 @@ footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
 <!-- 비용 -->
 <section id="cost">
   <div class="sec-head"><h2>예상 비용</h2><span class="muted small">항공·숙소·렌트비 제외 · 6명 전체 기준 · 모두 추정치</span></div>
-  <div class="rate"><label for="rate">환율: 100엔 =</label><input id="rate" type="number" inputmode="decimal" value="930" step="5" min="500"><span>원</span><span class="small muted">기본값은 2026년 4월 ECB 기준환율로 환산한 추정치입니다. 환전할 때 실제 환율로 바꿔 보세요.</span></div>
+  <div class="rate"><label for="rate">환율: 100엔 =</label><input id="rate" type="number" inputmode="decimal" value="900" step="5" min="500"><span>원</span><span class="small muted">기본값 900원은 예산 계산용 기준입니다. 환전할 때 실제 환율로 바꿔 보세요.</span></div>
   <div class="total" id="totals"></div>
   <div class="table-wrap"><table>
     <thead><tr><th>항목</th><th>계산 근거</th><th class="r">엔(최소~최대)</th><th class="r">원</th></tr></thead>
@@ -333,7 +333,7 @@ footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
   function won(y,r){return y*r/100}
   function man(n){return (Math.round(n/10000)).toLocaleString('ko-KR')+'만'}
   function render(){
-    var r=parseFloat(rateEl.value);if(!(r>0))r=930;
+    var r=parseFloat(rateEl.value);if(!(r>0))r=900;
     var lo=0,hi=0,rows='';
     cost.forEach(function(c){
       lo+=c[2];hi+=c[3];
