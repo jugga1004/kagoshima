@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}*,*::before,*::after{box-sizing:border-box}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>가고시마 가족여행 10/31–11/4</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: 한 줄 세로 흐름(최대 760px) + 상단 고정 섹션 탭. 사쿠라지마 화산재(현무암 회색)와 긴코만 바다색, 용암색은 경고에만 */
+:root{
+  --bg:#eef0f0; --surface:#ffffff; --ink:#1d2226; --muted:#5b6670; --line:#d5dadc;
+  --sea:#1b6a86; --sea-soft:#dcebf0; --lava:#b8432a; --lava-soft:#f6e3dd; --ok:#2f7a4f;
+  --f-display:"Do Hyeon","IBM Plex Sans KR",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#15191c; --surface:#1e2428; --ink:#e7ebec; --muted:#9aa6ad; --line:#2f373c;
+  --sea:#6fb6cf; --sea-soft:#1c3440; --lava:#ef8a6f; --lava-soft:#3a2420; --ok:#7cc79a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#15191c; --surface:#1e2428; --ink:#e7ebec; --muted:#9aa6ad; --line:#2f373c;
+  --sea:#6fb6cf; --sea-soft:#1c3440; --lava:#ef8a6f; --lava-soft:#3a2420; --ok:#7cc79a; color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.65}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;line-height:1.25;margin:0}
+h1{font-size:clamp(30px,7vw,44px)}
+h2{font-size:26px}
+h3{font-size:19px}
+a{color:var(--sea)}
+a:focus-visible,button:focus-visible,input:focus-visible,label:focus-within{outline:2px solid var(--sea);outline-offset:2px}
+.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)}
+small,.small{font-size:13px}
+
+header.hero{padding-block:32px 20px;display:grid;gap:14px}
+.eyebrow{font-size:12px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.lede{font-size:16px;margin:0;max-width:62ch}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;min-width:0}
+.fact b{display:block;font-size:12px;color:var(--muted);font-weight:500;letter-spacing:.04em}
+.fact span{font-size:15px}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px));overflow-x:auto;white-space:nowrap}
+nav.tabs a{display:inline-block;padding:10px 12px;color:var(--muted);text-decoration:none;font-weight:500;font-size:14px;border-bottom:2px solid transparent}
+nav.tabs a:hover{color:var(--ink);border-bottom-color:var(--sea)}
+
+section{padding-top:36px;display:grid;gap:16px;scroll-margin-top:48px}
+.sec-head{display:grid;gap:4px}
+.note{background:var(--sea-soft);border-radius:8px;padding:12px 14px;font-size:14px}
+.warn{background:var(--lava-soft);border-radius:8px;padding:12px 14px;font-size:14px}
+.warn strong{color:var(--lava)}
+
+/* 일정 */
+.day{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.day-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.day-top .date{font-family:var(--f-display);font-size:22px;color:var(--sea)}
+.day-top .stay{margin-left:auto;font-size:13px;color:var(--muted)}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:99px;background:var(--lava-soft);color:var(--lava);font-weight:600}
+.tag.sea{background:var(--sea-soft);color:var(--sea)}
+ol.tl{list-style:none;margin:0;padding:6px 16px 12px}
+ol.tl li{display:grid;grid-template-columns:64px 1fr;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line)}
+ol.tl li:last-child{border-bottom:0}
+ol.tl .t{font-family:var(--f-mono);font-size:13px;color:var(--muted);padding-top:2px}
+ol.tl .d{min-width:0}
+ol.tl .d p{margin:2px 0 0;font-size:13.5px;color:var(--muted)}
+.day .tip{margin:0 16px 14px}
+.wx{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:9px 16px;background:var(--sea-soft);font-size:13.5px}
+.wx b{font-weight:600;color:var(--sea)}
+.wx .alt{color:var(--muted);font-size:12.5px}
+
+/* 체크리스트 */
+.checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.group{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.group h3{margin-bottom:8px}
+.group label{display:flex;gap:10px;align-items:flex-start;padding:5px 0;cursor:pointer}
+.group input{margin-top:5px;accent-color:var(--sea);flex:none;width:16px;height:16px}
+.group label.done span{color:var(--muted);text-decoration:line-through}
+.progress{display:flex;align-items:center;gap:12px;font-size:14px}
+.bar{flex:1;height:6px;background:var(--line);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--ok);transition:width .2s}
+.reset{font:inherit;font-size:13px;background:none;border:1px solid var(--line);color:var(--muted);border-radius:6px;padding:3px 10px;cursor:pointer}
+
+/* 표 */
+.table-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+th,td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.04em}
+td.r,th.r{text-align:right;white-space:nowrap}
+tfoot td{font-weight:600;border-bottom:0}
+tr.sub td{color:var(--muted);font-size:13px}
+.rate{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:14px}
+.rate input{font:inherit;width:90px;padding:4px 8px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);font-family:var(--f-mono)}
+.total{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.total div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.total b{display:block;font-size:12px;color:var(--muted);font-weight:500}
+.total .big{font-family:var(--f-display);font-size:24px}
+
+/* 쇼핑·맛집 */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:4px;align-content:start;min-width:0}
+.card h4{margin:0;font-size:15px;font-weight:600}
+.card p{margin:0;font-size:13.5px;color:var(--muted)}
+.card .meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.area{display:grid;gap:10px}
+.area>h3{color:var(--sea)}
+ul.plain{margin:0;padding-left:18px}
+ul.plain li{margin:3px 0}
+footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+
+<div class="wrap">
+<header class="hero">
+  <div class="eyebrow">10.31 토 – 11.4 수 · 4박 5일 · 엄마 2 + 아이 4</div>
+  <h1>가고시마 가족여행</h1>
+  <p class="lede">첫날은 렌트해서 기리시마 고쿠부에서 1박, 다음 날 사쿠라지마를 돌고 페리로 시내에 들어와 중앙역에서 차를 반납합니다. 나머지 3박은 중앙역 근처에 묵으며 걸어서·전차로 다닙니다. 마지막 날까지 마음 편하게 다닐 수 있도록 하루에 큰 일정은 두세 개만 넣었습니다.</p>
+  <div class="facts">
+    <div class="fact"><b>가는 편 KE2179</b><span class="num">인천 T2 14:40 → 가고시마 16:20</span></div>
+    <div class="fact"><b>오는 편 KE2180</b><span class="num">가고시마 17:30 → 인천 T2 19:10</span></div>
+    <div class="fact"><b>인원</b><span>엄마 2 · 5학년 남 2 · 2학년 여 1 · 7살 여 1</span></div>
+    <div class="fact"><b>제외한 곳</b><span>이부스키, 동물원, 수족관</span></div>
+  </div>
+  <p class="small muted">항공 시간은 예약 기준입니다. 출발 전날 대한항공 앱에서 지연·변경 여부를 확인하세요.</p>
+</header>
+
+<nav class="tabs" aria-label="섹션">
+  <a href="#plan">일정</a><a href="#pack">준비물</a><a href="#cost">예상 비용</a><a href="#shop">쇼핑</a><a href="#eat">맛집</a><a href="#care">주의사항</a>
+</nav>
+
+<!-- 일정 -->
+<section id="plan">
+  <div class="sec-head"><h2>일정</h2><span class="muted small">시간은 목표치입니다. 아이들 컨디션에 맞춰 앞뒤로 조정하세요.</span></div>
+
+  <div class="note"><b>날씨 예보 보는 법</b> · 각 날짜의 파란 줄은 tenki.jp(일본기상협회) 2주 예보 2026-10-23 10시 발표분입니다. 8~12일 뒤 예보라 자주 바뀌고, 다른 예보 사이트와 비 예보가 엇갈리는 날은 함께 적었습니다. 11월 초 가고시마는 낮 20~23℃, 아침저녁 10℃대 중반으로 예상되니 얇은 겉옷을 챙기세요. 출발 2~3일 전에 다시 확인하세요.</div>
+
+  <div class="warn"><strong>올해 오하라 마쓰리와 겹칩니다.</strong> 가고시마 최대 축제인 제75회 오하라 마쓰리가 덴몬칸 전차거리에서 열립니다. 11/2(월) 18:50~20:20경 밤 축제, 11/3(화·공휴일) 10:20~15:25 본 축제. 수만 명이 춤추며 행진하는 걸 공짜로 볼 수 있는 대신, 덴몬칸 일대 전차·버스가 통제되고 식당이 붐빕니다. 아래 일정은 이걸 구경거리로 넣었습니다.</div>
+
+  <article class="day">
+    <div class="day-top"><span class="date">10/31 토</span><h3>도착 · 렌트 · 고쿠부</h3><span class="stay">숙박: 기리시마 고쿠부</span></div>
+    <div class="wx"><b>흐린 뒤 맑음</b><span class="num">23℃ / 18℃ · 비 30%</span><span class="alt">다른 예보는 비 60~80%도 있음</span></div>
+    <ol class="tl">
+      <li><span class="t">12:00</span><div class="d">인천공항 제2터미널 도착<p>14:40 출발 기준 2시간 40분 전. 6명 체크인·짐 부치기·보안검색에 토요일 혼잡까지 감안. 점심은 공항에서 먹고, 기내용 간식·물티슈 챙기기.</p></div></li>
+      <li><span class="t">16:20</span><div class="d">가고시마 공항 도착 → 입국심사·짐 찾기<p>Visit Japan Web QR 미리 등록해두면 빨라집니다.</p></div></li>
+      <li><span class="t">17:00</span><div class="d">렌터카 영업소 셔틀 → 차량 수령<p>6명 + 캐리어면 7~8인승 미니밴. 주니어시트 장착 확인, ETC 카드 대여 여부 결정.</p></div></li>
+      <li><span class="t">17:45</span><div class="d">고쿠부로 이동 (약 20분) → 체크인·짐 풀기<p>해 지기 전(11월 초 일몰 17:30경)에 첫 운전을 끝낼 수 있어 부담이 적습니다.</p></div></li>
+      <li><span class="t">18:30</span><div class="d">저녁 · 고쿠부 시내<p>공항 근처 '스마일'(좌식) 같은 흑돼지 정식집도 영업시간 안에 갈 수 있습니다. 다음 날 아침거리는 편의점에서.</p></div></li>
+      <li><span class="t">20:00</span><div class="d">숙소 가족탕 · 휴식</div></li>
+    </ol>
+    <div class="note tip"><b>온천 팁</b> · 남자아이 둘을 남탕에 따로 보내기 어렵다면 숙소의 <b>가족탕(貸切風呂, 전세 온천)</b>을 확인하세요. 30~50분 단위로 빌려 가족이 함께 들어갑니다. 예약제가 많아 체크인 때 바로 예약하세요.</div>
+  </article>
+
+  <article class="day">
+    <div class="day-top"><span class="date">11/1 일</span><h3>고쿠부 → 사쿠라지마 → 페리 → 차 반납</h3><span class="stay">숙박: 가고시마 중앙역</span></div>
+    <div class="wx"><b>흐림</b><span class="alt">다른 예보도 비 10% 안팎 · 전망대 시야는 구름 상태에 따라</span></div>
+    <ol class="tl">
+      <li><span class="t">10:00</span><div class="d">체크아웃 → 긴코만 해안도로로 사쿠라지마 직행 (약 1시간 10~20분)<p>가는 길 후쿠야마에 흑초 항아리밭이 바다를 따라 펼쳐집니다. 화장실 겸 잠깐 들러도 좋음. 사쿠라지마는 동쪽(구로카미) 육로로 들어가 남쪽 → 서쪽(항구) 순서로 돕니다.</p></div></li>
+      <li><span class="t">11:20</span><div class="d">아리무라 용암 전망소<p>굳은 용암 위로 난 산책로. 남쪽에서 분화구가 가장 가깝게 보이는 곳.</p></div></li>
+      <li><span class="t">12:00</span><div class="d">유노히라 전망소<p>섬에서 사람이 오를 수 있는 가장 높은 곳(해발 373m). 맞은편으로 가고시마 시내가 한눈에.</p></div></li>
+      <li><span class="t">12:45</span><div class="d">점심 · 미치노에키 사쿠라지마<p>사쿠라지마 고미캉(작은 귤) 소프트아이스크림. 일요일 점심이라 붐비면 페리 안 우동으로 대체.</p></div></li>
+      <li><span class="t">13:45</span><div class="d">사쿠라지마 비지터센터 → 나기사 용암 산책로 · 족욕<p>길이 100m 무료 족욕탕. 바지만 걷으면 아이들 다 같이 들어갈 수 있어 온천 대신 딱입니다. 수건 지참.</p></div></li>
+      <li><span class="t">15:00</span><div class="d">사쿠라지마 페리 (차 실은 채로 약 15분) <span class="tag sea">아이들 하이라이트</span><p>배 안 우동가게 '야부킨'의 우동을 15분 안에 먹는 게 이 노선의 명물입니다.</p></div></li>
+      <li><span class="t">15:30</span><div class="d">주유(가득) → 가고시마 중앙역 영업소 반납<p>편도 반납 수수료 유무는 예약 확인서로 체크.</p></div></li>
+      <li><span class="t">16:15</span><div class="d">숙소 체크인 · 휴식 → 저녁은 중앙역 아뮤플라자 식당가</div></li>
+    </ol>
+  </article>
+
+  <article class="day">
+    <div class="day-top"><span class="date">11/2 월</span><h3>센간엔 · 시로야마 · 밤 축제</h3><span class="stay">숙박: 가고시마 중앙역</span></div>
+    <div class="wx"><b>맑고 때때로 흐림</b><span class="alt">다른 예보는 비 80% · 우산 챙기기</span></div>
+    <ol class="tl">
+      <li><span class="t">09:00</span><div class="d">중앙역에서 버스(시티뷰 등) → 센간엔<p>CUTE 2일권을 이날 개시하면 다음 날까지 버스·전차·페리 무제한.</p></div></li>
+      <li><span class="t">09:30</span><div class="d">센간엔 (9:00~17:00)<p>사쿠라지마를 정원 풍경으로 끌어들인 영주의 별장. 옆 쇼코슈세이칸 박물관, 사쓰마 기리코(유리공예) 공방 견학.</p></div></li>
+      <li><span class="t">12:00</span><div class="d">점심 · 센간엔 앞 '잔보모치'<p>꼬치 두 개 꽂은 떡. 아이들이 좋아하는 간단한 점심 겸 간식.</p></div></li>
+      <li><span class="t">13:30</span><div class="d">시로야마 전망대 (버스)<p>사쿠라지마 정면 뷰 사진 포인트. 산책로로 내려오면 덴몬칸까지 약 20분.</p></div></li>
+      <li><span class="t">15:00</span><div class="d">덴몬칸 '무자키' 시로쿠마 빙수 → 아케이드 쇼핑<p>베이비 사이즈가 있어 아이 한 명당 하나도 부담 없음.</p></div></li>
+      <li><span class="t">18:50</span><div class="d">오하라 마쓰리 밤 축제 (선택)<p>피곤하면 일찍 중앙역으로 복귀. 저녁은 축제 전에 먹기.</p></div></li>
+    </ol>
+  </article>
+
+  <article class="day">
+    <div class="day-top"><span class="date">11/3 화</span><h3>오하라 마쓰리 · 과학관</h3><span class="tag">일본 공휴일 · 혼잡</span><span class="stay">숙박: 가고시마 중앙역</span></div>
+    <div class="wx"><b>흐리고 때때로 맑음</b><span class="num">비 20%</span><span class="alt">다른 예보는 비 80% · 비 오면 아래 대안대로</span></div>
+    <ol class="tl">
+      <li><span class="t">10:00</span><div class="d">덴몬칸 전차거리에서 본 축제 퍼레이드 관람<p>전차 운행이 바뀔 수 있어 중앙역에서 걸어가는 게 확실(20~25분). 자리는 일찍 잡을수록 좋습니다.</p></div></li>
+      <li><span class="t">11:30</span><div class="d">이른 점심 · 야마카타야 백화점 식당<p>12시 이후엔 줄이 길어집니다.</p></div></li>
+      <li><span class="t">13:30</span><div class="d">가고시마 시립 과학관 (9:30~18:00)<p>우주·과학 체험형 전시라 5학년부터 7살까지 고루 즐깁니다. 화요일 휴관이지만 공휴일이라 이날은 문을 엽니다(다음 날 휴관).</p></div></li>
+      <li><span class="t">16:30</span><div class="d">중앙역 아뮤플라자 옥상 관람차 '아뮤란' → 저녁</div></li>
+    </ol>
+    <div class="note tip"><b>비 오면</b> · 오전 축제 대신 과학관에 오래 머물고, 오후는 아뮤플라자·중앙역 쇼핑으로 실내 위주로 돌리세요.</div>
+  </article>
+
+  <article class="day">
+    <div class="day-top"><span class="date">11/4 수</span><h3>쇼핑 · 귀국</h3></div>
+    <div class="wx"><b>흐린 뒤 비</b><span class="num">비 60%</span><span class="alt">실내 쇼핑 위주라 영향 적음 · 접이식 우산은 손가방에</span></div>
+    <ol class="tl">
+      <li><span class="t">10:00</span><div class="d">체크아웃, 짐은 숙소 프런트에 맡기기</div></li>
+      <li><span class="t">10:15</span><div class="d">중앙역 기념품 거리 · 아뮤플라자 · 드럭스토어</div></li>
+      <li><span class="t">11:30</span><div class="d">점심 · 가고시마 라멘<p>12시 전에 들어가야 줄이 짧습니다.</p></div></li>
+      <li><span class="t">13:30</span><div class="d">숙소에서 짐 찾기 → 중앙역 동쪽 출구 리무진 버스 정류장</div></li>
+      <li><span class="t">14:20</span><div class="d">공항 리무진 버스 (중앙역 → 공항 약 40분)<p>늦어도 14:30 전후 버스. 6명이면 승차권 미리 구매, 캐리어는 버스 짐칸에.</p></div></li>
+      <li><span class="t">15:00</span><div class="d">공항 도착 → 체크인 → 공항 앞 무료 족욕 · 마지막 쇼핑<p>출발 2시간 30분 전 도착. 국제선 체크인 마감 시간은 예약 안내에서 확인.</p></div></li>
+      <li><span class="t">17:30</span><div class="d">KE2180 출발 → 인천 19:10 도착</div></li>
+    </ol>
+  </article>
+</section>
+
+<!-- 준비물 -->
+<section id="pack">
+  <div class="sec-head"><h2>준비물</h2><span class="muted small">체크하면 이 기기에만 저장됩니다. 엄마 두 분은 각자 휴대폰에서 체크하세요.</span></div>
+  <div class="progress"><span class="num" id="packCount">0 / 0</span><div class="bar"><i id="packBar"></i></div><button class="reset" id="packReset" type="button">초기화</button></div>
+  <div class="checks" id="checks"></div>
+</section>
+
+<!-- 비용 -->
+<section id="cost">
+  <div class="sec-head"><h2>예상 비용</h2><span class="muted small">항공·숙소·렌트비 제외 · 6명 전체 기준 · 모두 추정치</span></div>
+  <div class="rate"><label for="rate">환율: 100엔 =</label><input id="rate" type="number" inputmode="decimal" value="930" step="5" min="500"><span>원</span><span class="small muted">기본값은 2026년 4월 ECB 기준환율로 환산한 추정치입니다. 환전할 때 실제 환율로 바꿔 보세요.</span></div>
+  <div class="total" id="totals"></div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>항목</th><th>계산 근거</th><th class="r">엔(최소~최대)</th><th class="r">원</th></tr></thead>
+    <tbody id="costRows"></tbody>
+    <tfoot><tr><td colspan="2">합계</td><td class="r num" id="sumYen"></td><td class="r num" id="sumWon"></td></tr></tfoot>
+  </table></div>
+  <div class="note small">
+    요금 기준: 사쿠라지마 페리 중학생 이상 250엔·초등 130엔, 차량 4~5m 2,350엔(운전자 1명 포함, 2024년 7월 개정) · 센간엔 어른 1,600엔·소인 800엔 · CUTE 2일권 어른 2,100엔·어린이 1,050엔(2026년 8월 개정) · 공항 리무진 어른 1,400~1,500엔·어린이 700~750엔. 7살은 미취학으로 보고 무료로 계산했습니다(시설마다 "어른 1명당 미취학 1명 무료" 조건이 많음). 과학관 입장료는 확인하지 못해 범위로 넣었습니다.
+  </div>
+</section>
+
+<!-- 쇼핑 -->
+<section id="shop">
+  <div class="sec-head"><h2>쇼핑리스트</h2></div>
+  <div class="warn"><strong>한국 반입 금지:</strong> 흑돼지 햄·소시지·육포·돈코츠 레토르트처럼 고기가 든 가공품은 검역에서 압수되고 과태료 대상입니다. 흑돼지는 현지에서 먹고 오세요.</div>
+  <div class="cards" id="shopCards"></div>
+</section>
+
+<!-- 맛집 -->
+<section id="eat">
+  <div class="sec-head"><h2>맛집리스트</h2><span class="muted small">이름을 누르면 구글 지도에서 검색됩니다. 영업시간·정기휴일은 방문 전 지도에서 확인하세요.</span></div>
+  <div id="eatAreas" class="area" style="gap:24px"></div>
+  <p class="small muted">닭회(鶏刺し)는 가고시마 명물이지만 생닭이라 아이들은 피하는 걸 권합니다.</p>
+</section>
+
+<!-- 주의사항 -->
+<section id="care">
+  <div class="sec-head"><h2>주의사항</h2></div>
+  <div class="group">
+    <ul class="plain">
+      <li><b>운전</b>: 좌측통행, 우회전이 큰 회전. 깜빡이·와이퍼 레버가 반대. 국제운전면허증 + 한국 면허증 + 여권을 모두 지참해야 렌트가 됩니다.</li>
+      <li><b>아이 좌석</b>: 일본은 만 6세 미만 카시트 의무. 7살은 주니어시트 필수, 2학년도 키 140cm 이하면 주니어시트 권장. 렌트 예약에 2개 넣었는지 확인.</li>
+      <li><b>사쿠라지마 화산</b>: 분화 경계 레벨과 바람 방향(화산재)을 출발 전날 일본 기상청 사이트에서 확인. 재가 날리면 마스크·모자·선글라스.</li>
+      <li><b>11/3 공휴일 + 축제</b>: 덴몬칸 전차·버스 통제, 식당 줄. 점심은 11시대에.</li>
+      <li><b>미아 대비</b>: 아이들 휴대폰이나 손목에 엄마 두 분 번호와 숙소 이름(일본어)을 적어 두세요. 집합 장소를 매번 정하기.</li>
+      <li><b>엄마 한 분만 보호자인 아이</b>: 일본 입국엔 보통 필요 없지만, 만일을 대비해 영문 가족관계증명서를 챙기면 안심.</li>
+      <li><b>항공 시간</b>: 출발 전날 대한항공 앱에서 지연·변경 여부를 확인하세요.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <span>정리 기준일 2026-10-23 · 요금·시간은 웹 검색 결과 기반 추정치이며 현지 사정으로 바뀔 수 있습니다. 예약·결제 전에는 공식 사이트와 교차 확인하세요.</span>
+  <span>AI(Claude)가 정리한 자료입니다.</span>
+</footer>
+</div>
+
+<script>
+(function(){
+  var KEY='kgs-trip-pack-v1';
+  var pack={
+    '서류·돈':['여권 6개 (유효기간 확인)','국제운전면허증 + 한국 운전면허증 (운전할 엄마 모두)','Visit Japan Web 등록 (가족 전원)','렌트·숙소 예약 확인서 캡처','엔화 현금 (작은 가게·족욕·버스용) + 해외결제 카드','동전 지갑 (동전이 많이 생김)','영문 가족관계증명서 (선택)','여행자보험 가입'],
+    '렌트·이동':['주니어시트 2개 예약 확인','휴대폰 거치대 + 차량 충전 케이블','구글 지도 오프라인 저장 (기리시마·사쿠라지마)','CUTE 2일권 (myroute 앱 또는 현장 구매)','eSIM 또는 포켓와이파이'],
+    '옷 (낮 20℃ 안팎, 아침저녁 쌀쌀)':['얇은 겉옷·바람막이 1인 1벌','긴바지 + 반팔/긴팔 레이어드','편한 운동화 (용암길·계단 많음)','잠옷','여벌 양말 넉넉히 (족욕 후 갈아신기)','접이식 우산 or 우비'],
+    '화산·바깥 활동':['마스크 (화산재)','모자·선글라스','작은 수건 4~6장 (족욕용)','물티슈·손소독제','선크림'],
+    '아이들':['상비약: 해열제(아이용)·멀미약·밴드·소화제','체온계','차·비행기용 간식, 보드게임·색칠놀이','아이들 손목 연락처 메모','작은 배낭 (각자 물병·간식)'],
+    '전자·기타':['110V 돼지코 2~3개 + 멀티탭','보조배터리 (기내 반입만)','지퍼백·접이식 장바구니','캐리어 여유 공간 (기념품)']
+  };
+  var state={};
+  try{state=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){state={}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
+  var host=document.getElementById('checks'), total=0, idx=0;
+  Object.keys(pack).forEach(function(g){
+    var box=document.createElement('div');box.className='group';
+    var h=document.createElement('h3');h.textContent=g;box.appendChild(h);
+    pack[g].forEach(function(item){
+      var id='pk'+(idx++);total++;
+      var lab=document.createElement('label');lab.setAttribute('for',id);
+      var cb=document.createElement('input');cb.type='checkbox';cb.id=id;cb.checked=!!state[item];
+      var sp=document.createElement('span');sp.textContent=item;
+      lab.appendChild(cb);lab.appendChild(sp);
+      if(cb.checked)lab.classList.add('done');
+      cb.addEventListener('change',function(){if(cb.checked)state[item]=1;else delete state[item];lab.classList.toggle('done',cb.checked);save();prog()});
+      box.appendChild(lab);
+    });
+    host.appendChild(box);
+  });
+  function prog(){
+    var n=host.querySelectorAll('input:checked').length;
+    document.getElementById('packCount').textContent=n+' / '+total;
+    document.getElementById('packBar').style.width=(n/total*100)+'%';
+  }
+  document.getElementById('packReset').addEventListener('click',function(){
+    state={};save();host.querySelectorAll('input').forEach(function(c){c.checked=false;c.parentNode.classList.remove('done')});prog();
+  });
+  prog();
+
+  // 비용 (엔, 6명 전체)
+  var cost=[
+    ['아침 ×4','편의점·카페 기준 (숙소 조식 포함이면 0)',10000,16000],
+    ['점심 ×4','6명 6,000~10,000엔/회',24000,40000],
+    ['저녁 ×3','6명 12,000~18,000엔/회',36000,54000],
+    ['흑돼지 저녁 ×1','샤브샤브·돈카츠 전문점',20000,30000],
+    ['간식·음료','시로쿠마, 소프트아이스, 음료 5일',10000,18000],
+    ['센간엔','어른 1,600×2 + 소인 800×3',5600,5600],
+    ['과학관 등 기타 입장','과학관 요금 확인 필요',1500,3500],
+    ['사쿠라지마 페리','차량 2,350(운전자 포함) + 어른 250 + 초등 130×3',2990,2990],
+    ['CUTE 2일권','어른 2,100×2 + 어린이 1,050×3',7350,7350],
+    ['공항 리무진 (귀국)','어른 1,400~1,500×2 + 어린이 700~750×3',4900,5250],
+    ['주유·주차','약 150km 주행, 숙소 주차 1박',3000,6000],
+    ['편도 반납 수수료','같은 현 안이면 무료인 곳 많음 · 확인 필요',0,3300],
+    ['기념품·쇼핑','선택 예비비',20000,40000],
+    ['기타','코인로커, 편의점, 비상금',5000,10000]
+  ];
+  var rateEl=document.getElementById('rate');
+  function fmt(n){return Math.round(n).toLocaleString('ko-KR')}
+  function won(y,r){return y*r/100}
+  function man(n){return (Math.round(n/10000)).toLocaleString('ko-KR')+'만'}
+  function render(){
+    var r=parseFloat(rateEl.value);if(!(r>0))r=930;
+    var lo=0,hi=0,rows='';
+    cost.forEach(function(c){
+      lo+=c[2];hi+=c[3];
+      var y=c[2]===c[3]?fmt(c[2]):fmt(c[2])+'~'+fmt(c[3]);
+      var w=c[2]===c[3]?fmt(won(c[2],r)):fmt(won(c[2],r))+'~'+fmt(won(c[3],r));
+      rows+='<tr><td>'+c[0]+'</td><td class="small muted">'+c[1]+'</td><td class="r num">'+y+'</td><td class="r num">'+w+'</td></tr>';
+    });
+    document.getElementById('costRows').innerHTML=rows;
+    document.getElementById('sumYen').textContent=fmt(lo)+'~'+fmt(hi);
+    document.getElementById('sumWon').textContent=fmt(won(lo,r))+'~'+fmt(won(hi,r));
+    document.getElementById('totals').innerHTML=
+      '<div><b>6명 합계 (엔)</b><span class="big num">'+fmt(lo)+'~'+fmt(hi)+'</span></div>'+
+      '<div><b>6명 합계 (원)</b><span class="big">'+man(won(lo,r))+'~'+man(won(hi,r))+'원</span></div>'+
+      '<div><b>엄마 1인당 부담 (반씩)</b><span class="big">'+man(won(lo,r)/2)+'~'+man(won(hi,r)/2)+'원</span></div>';
+  }
+  rateEl.addEventListener('input',render);render();
+
+  var shop=[
+    ['가루칸 (かるかん)','참마로 만든 폭신한 찐 과자. 가고시마 대표 선물. 아카시야 본점이 유명.','회사·어른용'],
+    ['시로쿠마 아이스 컵','세이카(セイカ) 시로쿠마 컵은 슈퍼·편의점에. 현지에서 먹는 용.','아이 간식'],
+    ['고구마 과자','가고시마 고구마로 만든 타르트·레어케이크, 고구마 칩.','가족 간식'],
+    ['흑초 (黒酢)','후쿠야마 항아리 흑초. 음료형 흑초는 아이도 마실 만함. 병은 위탁수하물에.','어른용'],
+    ['사쓰마아게','어묵 튀김. 생물은 냉장 보관이 필요해 현지에서 먹고, 진공포장은 반입 규정 확인.','현지에서'],
+    ['지란차 (知覧茶)','가고시마는 녹차 생산량 일본 최상위권. 티백이 선물로 가벼움.','부모님 선물'],
+    ['사쿠라지마 화산재 굿즈','화산재 캔, 고미캉 사탕·젤리. 아이들 학교 친구 선물로 재밌음.','아이 친구 선물'],
+    ['드럭스토어','파스, 눈약, 아이 해열 시트, 입욕제. 5,000엔 이상 면세(여권 필요).','생활용품'],
+    ['문구·캐릭터','중앙역·덴몬칸 문구점, 가챠. 각자 용돈 정해주면 고르는 재미.','아이 각자'],
+    ['사쓰마 기리코','센간엔 공방의 컷 유리. 작품이라 가격대가 높음.','선택']
+  ];
+  document.getElementById('shopCards').innerHTML=shop.map(function(s){
+    return '<div class="card"><h4>'+s[0]+'</h4><p>'+s[1]+'</p><div class="meta"><span class="tag sea">'+s[2]+'</span></div></div>';
+  }).join('');
+
+  function g(q){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q)}
+  var eat=[
+    ['기리시마·고쿠부 (10/31~11/1)',[
+      ['すまいる (스마일)','霧島市 すまいる 和食','공항에서 차로 약 10분. 좌식·의자석 70석 규모, 흑돼지 철판구이 정식.','좌식 있음'],
+      ['桷志田 (카쿠이다) 흑초 레스토랑','桷志田 福山 黒酢レストラン','사쿠라지마 가는 해안길 후쿠야마. 항아리밭 전망, 매점에서 흑초 음료 시음.','이동 중 들르기'],
+      ['고쿠부 시내 패밀리레스토랑','国分 ファミリーレストラン','첫날 늦은 저녁용. 아이 메뉴·드링크바.','늦게 열어 편함']
+    ]],
+    ['사쿠라지마 (11/1)',[
+      ['道の駅 桜島 火の島めぐみ館','道の駅 桜島 火の島めぐみ館','고미캉 소프트아이스크림, 간단 식사.','아이 OK'],
+      ['페리 안 우동 やぶ金','桜島フェリー やぶ金','15분 항해 동안 먹는 우동. 차 세우고 객실로 올라가면 바로.','명물 체험']
+    ]],
+    ['중앙역 주변 (숙소 근처)',[
+      ['아뮤플라자 가고시마 식당가','アミュプラザ鹿児島 レストラン','흑돼지 샤브샤브·돈카츠·라멘이 한 건물에. 비 와도 OK.','아이 OK'],
+      ['鹿児島ラーメン 豚とろ','鹿児島ラーメン 豚とろ','돼지 목살 차슈가 두툼한 가고시마 라멘. 국물 농도 선택 가능.','점심'],
+      ['ざぼんラーメン','ざぼんラーメン 鹿児島','순한 돈코츠, 양배추 토핑. 아이들 입맛에 무난.','점심'],
+      ['黒福多 (흑돼지)','黒福多 鹿児島中央','흑돼지 샤브샤브·돈카츠. 저녁은 예약 권장.','예약 권장']
+    ]],
+    ['덴몬칸 (11/2~11/3)',[
+      ['天文館むじゃき 시로쿠마','天文館むじゃき 本店','시로쿠마 빙수 원조. 베이비 사이즈 있음.','필수'],
+      ['山形屋 대식당','山形屋 大食堂 鹿児島','백화점 꼭대기 층 식당. 야키소바가 유명, 메뉴 다양해 아이 동반 편함.','아이 OK'],
+      ['吾愛人 (와카나) 본점','吾愛人 本店 天文館','흑돼지 샤브샤브·향토요리 노포. 1인 예산이 높은 편.','예약 권장'],
+      ['黒豚ふくや','黒豚ふくや 鹿児島','돈카츠 백명점 2026 선정. 위치·영업시간 확인 필요.','줄 서는 곳'],
+      ['豚とろ 天文館本店','豚とろ 天文館本店','라멘. 축제날엔 일찍 가기.','점심']
+    ]],
+    ['센간엔 앞 (11/2)',[
+      ['ぢゃんぼ餅 平田屋','ぢゃんぼ餅 平田屋 磯','꼬치 두 개 꽂은 떡(잔보모치). 바다 보며 먹는 간식.','간식']
+    ]]
+  ];
+  document.getElementById('eatAreas').innerHTML=eat.map(function(a){
+    return '<div class="area"><h3>'+a[0]+'</h3><div class="cards">'+a[1].map(function(e){
+      return '<div class="card"><h4><a href="'+g(e[1])+'" target="_blank" rel="noopener">'+e[0]+'</a></h4><p>'+e[2]+'</p><div class="meta"><span class="tag sea">'+e[3]+'</span></div></div>';
+    }).join('')+'</div></div>';
+  }).join('');
+})();
+</script>
+
+</body>
+
+</html>
