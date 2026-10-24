@@ -124,6 +124,22 @@ tr.sub td{color:var(--muted);font-size:13px}
 .card .meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
 .area{display:grid;gap:10px}
 .area>h3{color:var(--sea)}
+.plan{margin:10px 0 6px;display:grid;gap:4px}
+.plan svg{width:100%;height:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.plan figcaption{font-size:12px;color:var(--muted)}
+.plan .wall{fill:none;stroke:var(--ink);stroke-width:2.5}
+.plan rect:not(.wall){stroke:var(--muted);stroke-width:1}
+.plan .room{fill:var(--surface)}
+.plan .wet{fill:var(--sea-soft)}
+.plan .stair{fill:var(--line)}
+.plan .park{fill:var(--bg)}
+.plan .tatami{fill:color-mix(in srgb,var(--ok) 12%,var(--surface))}
+.plan .nook{fill:color-mix(in srgb,var(--ok) 22%,var(--surface))}
+.plan .bed{fill:color-mix(in srgb,var(--sun) 35%,var(--surface))}
+.plan .ttl{font:400 16px var(--f-display);fill:var(--ink)}
+.plan .lb{font:500 12px var(--f-body);fill:var(--ink);text-anchor:middle}
+.plan .lb.sm{font-size:10.5px;fill:var(--muted)}
+.plan .vt{writing-mode:vertical-rl}
 .where{display:grid;gap:28px}
 .where-block{display:grid;gap:10px}
 .mapshot{margin:0;display:grid;gap:2px}
@@ -257,7 +273,40 @@ footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
         <li><b>공항버스 승차장</b>: 서쪽 출구로 들어가 역을 가로질러 동쪽 출구 건너편, 캐리어 끌고 10분 안팎.</li>
         <li><b>참고</b>: 무료 주차 1대가 있어 렌터카 반납을 11/2로 미루면 센간엔 등을 차로 다닐 수도 있습니다(추가 렌트비·반납 장소 확인 필요).</li>
       </ul>
-      <span class="small muted">출처: 예약 사이트 숙소 소개·후기 (2026-10-23 확인)</span>
+      <figure class="plan">
+        <svg viewBox="0 0 640 300" role="img" aria-label="중앙역 숙소 구조도. 1층은 욕실·화장실·세탁기, 주방, 식탁, 거실, 현관, 주차 1대. 2층은 침대방(싱글 2, 더블 1)과 다다미방(더블 2, 좌식 테이블)">
+          <g class="fl">
+            <text x="10" y="18" class="ttl">1층</text>
+            <rect x="10" y="28" width="300" height="250" class="wall"/>
+            <rect x="10" y="28" width="70" height="60" class="wet"/><text x="45" y="62" class="lb">욕실</text>
+            <rect x="80" y="28" width="45" height="60" class="wet"/><text x="102" y="62" class="lb">화장실</text>
+            <rect x="125" y="28" width="40" height="90" class="stair"/><text x="145" y="78" class="lb sm">계단</text>
+            <rect x="165" y="28" width="145" height="60" class="room"/><text x="237" y="62" class="lb">주방·냉장고</text>
+            <rect x="10" y="88" width="70" height="40" class="wet"/><text x="45" y="112" class="lb sm">세면·세탁기</text>
+            <rect x="10" y="128" width="95" height="150" class="park"/><text x="57" y="200" class="lb">주차 1대</text>
+            <rect x="105" y="128" width="30" height="150" class="room"/><text x="120" y="210" class="lb sm vt">현관</text>
+            <rect x="165" y="88" width="145" height="70" class="room"/><text x="237" y="128" class="lb">식탁</text>
+            <rect x="135" y="158" width="175" height="120" class="room"/><text x="222" y="215" class="lb">거실</text><text x="222" y="234" class="lb sm">대형 프로젝터</text>
+          </g>
+          <g class="fl" transform="translate(330 0)">
+            <text x="10" y="18" class="ttl">2층</text>
+            <rect x="10" y="28" width="300" height="250" class="wall"/>
+            <rect x="10" y="28" width="105" height="30" class="room"/><text x="62" y="48" class="lb sm">수납</text>
+            <rect x="10" y="58" width="135" height="220" class="room"/><text x="77" y="76" class="lb">침대방</text>
+            <rect x="22" y="88" width="56" height="44" class="bed"/><text x="50" y="115" class="lb sm">싱글</text>
+            <rect x="22" y="150" width="70" height="44" class="bed"/><text x="57" y="177" class="lb sm">싱글</text>
+            <rect x="22" y="212" width="90" height="52" class="bed"/><text x="67" y="243" class="lb sm">더블</text>
+            <rect x="115" y="28" width="45" height="90" class="stair"/><text x="137" y="78" class="lb sm">계단</text>
+            <rect x="145" y="118" width="25" height="160" class="room"/><text x="157" y="200" class="lb sm vt">복도</text>
+            <rect x="170" y="28" width="140" height="250" class="tatami"/><text x="240" y="132" class="lb">다다미방</text>
+            <rect x="215" y="36" width="88" height="70" class="nook"/><text x="259" y="76" class="lb sm">좌식 테이블</text>
+            <rect x="200" y="148" width="100" height="52" class="bed"/><text x="250" y="179" class="lb sm">더블</text>
+            <rect x="200" y="214" width="100" height="52" class="bed"/><text x="250" y="245" class="lb sm">더블</text>
+          </g>
+        </svg>
+        <figcaption>예약 사이트의 구조도를 보고 간단히 다시 그린 그림이라 실제 크기·위치와 다를 수 있어요. 침대는 싱글 2 + 더블 3, 8명이면 더블 3개에 2명씩 + 싱글 2명.</figcaption>
+      </figure>
+      <span class="small muted">출처: 예약 사이트 숙소 소개·후기·구조도 (2026-10-24 확인)</span>
     </div>
   </article>
 
