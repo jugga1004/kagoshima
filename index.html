@@ -79,6 +79,12 @@ ol.tl .d p{margin:2px 0 0;font-size:13.5px;color:var(--muted)}
 .wx{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:9px 16px;background:var(--sea-soft);font-size:13.5px}
 .wx b{font-weight:600;color:var(--sea)}
 .wx .alt{color:var(--muted);font-size:12.5px}
+.wx .wind{flex-basis:100%;font-size:13px}
+.wear{padding:9px 16px 11px;font-size:13.5px;border-bottom:1px dashed var(--line)}
+.wear > b{font-weight:600;color:var(--sea);margin-right:6px}
+.wear ul{margin:4px 0 0;padding-left:18px;color:var(--muted)}
+.wear li{margin:2px 0}
+.wear li strong{color:var(--text,inherit);font-weight:600}
 .scene{display:block;width:100%;height:auto;border-radius:14px}
 .ico{width:28px;height:28px;flex:none;color:var(--sea);align-self:center}
 .photos{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;padding:14px 16px 2px}
@@ -210,21 +216,35 @@ footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
 </header>
 
 <nav class="tabs" aria-label="섹션">
-  <a href="#plan">일정</a><a href="#where">위치</a><a href="#pack">준비물</a><a href="#cost">예상 비용</a><a href="#shop">쇼핑</a><a href="#eat">맛집</a><a href="#care">주의사항</a>
+  <a href="#plan">일정</a><a href="#where">위치</a><a href="#cost">예상 비용</a><a href="#shop">쇼핑</a><a href="#eat">맛집</a><a href="#care">주의사항</a>
 </nav>
 
 <!-- 일정 -->
 <section id="plan">
   <div class="sec-head"><h2>일정</h2><span class="muted small">시간은 목표치입니다. 아이들 컨디션에 맞춰 앞뒤로 조정하세요.</span></div>
 
-  <div class="note"><b>날씨 예보 보는 법</b> · 각 날짜의 파란 줄은 페이지를 열 때마다 최신 예보(Open-Meteo, 가고시마시 기준)를 불러와 <b>최고/최저 기온 · 평균 습도 · 비 올 확률</b>을 보여줍니다. 불러오지 못하면 2026-10-23 tenki.jp 예보가 대신 보입니다. 1주일 안으로 다가오면 <a href="https://weather.yahoo.co.jp/weather/jp/46/8810/46201.html" target="_blank" rel="noopener">야후 재팬 날씨(가고시마시)</a> 주간 예보와 함께 비교해 보세요. 멀리 있는 날짜일수록 예보가 자주 바뀝니다.</div>
+  <div class="note"><b>날씨 예보 보는 법</b> · 각 날짜의 파란 줄은 페이지를 열 때마다 최신 예보(Open-Meteo, 가고시마시 기준)를 불러와 <b>최고/최저 기온 · 습도 · 비 올 확률 · 체감온도 · 최대 바람</b>을 보여줍니다. 불러오지 못하면 2026-10-29에 받아 둔 예보가 대신 보입니다. 1주일 안으로 다가오면 <a href="https://weather.yahoo.co.jp/weather/jp/46/8810/46201.html" target="_blank" rel="noopener">야후 재팬 날씨(가고시마시)</a> 주간 예보와 함께 비교해 보세요. 멀리 있는 날짜일수록 예보가 자주 바뀝니다.</div>
   <div class="home-wx" id="homeWx"><div class="hw-col"><span class="hw-k">지금 경기도 시흥과 비교</span><span>시흥 실시간 날씨는 GitHub 페이지에서 불러옵니다. 이 화면에 안 보이면 GitHub 페이지로 열어 주세요.</span></div></div>
+  <div class="note"><b>옷차림 기본: 반팔 + 얇은 긴팔 + 바람막이, 세 겹</b> · 기상청(JMA) 1991~2020 평년값으로 가고시마 11월은 최고 20.6℃ / 최저 12.2℃, 이번 주 예보는 낮 22~24℃ / 아침 14~17℃로 평년보다 조금 따뜻합니다. 기온만 보면 '초가을'이지만 체감을 낮추는 게 둘입니다.
+    <ul style="margin:6px 0 0;padding-left:18px">
+      <li><b>바람:</b> 바람이 1m/s 셀 때마다 체감은 대략 1℃씩 내려간다고 보면 됩니다(일반적인 어림값). 페리 갑판, 사쿠라지마 전망소, 시로야마 전망대, 바닷가 이온몰 주변이 특히 바람을 그대로 맞습니다.</li>
+      <li><b>해 질 무렵:</b> 낮엔 반팔로 다니는 사람도 보이지만, 17시가 넘으면 빠르게 서늘해진다는 후기가 많습니다. 밤 축제(11/2)처럼 오래 서 있는 일정이 가장 춥게 느껴집니다.</li>
+    </ul>
+    <span class="small muted">최근 방문 후기 참고: 한국어 여행 블로그들은 "낮엔 가볍게, 아침저녁·바닷바람엔 얇은 겉옷"으로 거의 같은 말을 하고, 일본 등산·여행 기록에는 바람 센 날 사쿠라지마 페리가 꽤 흔들렸다는 이야기가 있습니다(2023-11). 개인 후기라 날마다 다를 수 있습니다. 각 날짜의 파란 줄에 <b>체감온도·최대 바람</b>이 함께 뜨니, 출발 전날 다시 보고 겉옷 두께를 정하세요.</span>
+  </div>
 
   <div class="warn"><strong>올해 오하라 마쓰리와 겹칩니다.</strong> 가고시마 최대 축제인 제75회 오하라 마쓰리가 덴몬칸 전차거리에서 열립니다. 11/2(월) 18:50~20:20경 밤 축제, 11/3(화·공휴일) 10:20~15:25 본 축제. 수만 명이 춤추며 행진하는 걸 공짜로 볼 수 있는 대신, 덴몬칸 일대 전차·버스가 통제되고 식당이 붐빕니다. 아래 일정은 이걸 구경거리로 넣었습니다.</div>
 
   <article class="day">
     <div class="day-top"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 16l20-7-2-3-8 3-5-5-2 1 3 6-4 1-2-2-1 1 2 4z" fill="currentColor"/></svg><span class="date">10/31 토</span><h3>도착 · 렌트 · 고쿠부</h3><span class="stay">숙박: 기리시마 고쿠부</span></div>
-    <div class="wx" data-date="2026-10-31"><b>흐린 뒤 맑음</b><span class="num">23℃ / 18℃ · 비 30%</span><span class="alt">다른 예보는 비 60~80%도 있음</span></div>
+    <div class="wx" data-date="2026-10-31"><b>맑음</b><span class="num">23℃ / 17℃ · 비 2%</span><span class="alt">10/29 Open-Meteo 예보</span><span class="wind">체감 16~22℃ · 바람 최대 3m/s(돌풍 11m/s) · 바람 약함</span></div>
+    <div class="wear"><b>옷차림</b>출발은 한국 가을, 도착은 초가을
+      <ul>
+        <li><strong>인천 출발:</strong> 한국은 아침이 한 자릿수일 수 있어 경량패딩이나 후드집업을 입고 나가고, 가고시마에선 벗어서 손가방에. 캐리어에 넣으면 11/4 귀국 밤에 꺼내기 어려워요.</li>
+        <li><strong>가고시마 저녁:</strong> 도착 무렵 20℃ 안팎, 밤엔 15℃ 아래로. 반팔 위에 얇은 긴팔이나 후드.</li>
+        <li><strong>고쿠부 숙소:</strong> 시내보다 내륙이라 밤이 조금 더 서늘합니다(추정). 온천 오가는 길에 걸칠 겉옷과 아이 잠옷은 긴팔로.</li>
+      </ul>
+    </div>
     <ol class="tl">
       <li><span class="t">12:00</span><div class="d">인천공항 제2터미널 도착<p>14:40 출발 기준 2시간 40분 전. 6명 체크인·짐 부치기·보안검색에 토요일 혼잡까지 감안. 점심은 공항에서 먹고, 기내용 간식·물티슈 챙기기.</p></div></li>
       <li><span class="t">16:20</span><div class="d">가고시마 공항 도착 → 입국심사·짐 찾기<p>Visit Japan Web QR 미리 등록해두면 빨라집니다.</p></div></li>
@@ -281,7 +301,15 @@ footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
 
   <article class="day">
     <div class="day-top"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 21l7-11h2l1-2h2l1 2h2l5 11z" fill="currentColor"/><circle cx="12" cy="5" r="2" fill="currentColor" opacity=".5"/><circle cx="15" cy="3" r="2" fill="currentColor" opacity=".35"/></svg><span class="date">11/1 일</span><h3>고쿠부 → 사쿠라지마 → 숙소 → 이온몰 쇼핑</h3><span class="stay">숙박: 가고시마 중앙역</span></div>
-    <div class="wx" data-date="2026-11-01"><b>흐림</b><span class="alt">다른 예보도 비 10% 안팎 · 전망대 시야는 구름 상태에 따라</span></div>
+    <div class="wx" data-date="2026-11-01"><b>대체로 맑음</b><span class="num">23℃ / 14℃ · 비 0%</span><span class="alt">10/29 Open-Meteo 예보 · 전망소는 시내보다 약 2℃ 낮음</span><span class="wind">체감 14~23℃ · 바람 최대 3m/s(돌풍 9m/s) · 바람 약함</span></div>
+    <div class="wear"><b>옷차림</b>이번 여행에서 바람·화산재를 가장 많이 맞는 날
+      <ul>
+        <li><strong>아침 출발:</strong> 고쿠부 아침은 14℃ 안팎. 긴팔 + 바람막이로 시작해서 낮에 벗기.</li>
+        <li><strong>유노히라 전망소(해발 약 370m):</strong> 높이만 따져도 시내보다 2℃쯤 낮고, 탁 트여 바람을 그대로 맞습니다. 차에서 내릴 땐 아이들도 지퍼 잠그는 겉옷.</li>
+        <li><strong>화산재:</strong> 바람 방향에 따라 재가 날립니다. 모자·선글라스·마스크, 겉옷은 털면 떨어지는 매끈한 바람막이가 니트·플리스보다 낫습니다(재가 섬유에 박힘). 흰 운동화는 비추천.</li>
+        <li><strong>저녁 이온몰:</strong> 안은 따뜻하지만 바닷가라 21시에 나올 땐 바람이 찹니다. 겉옷은 차에 두지 말고 들고 들어가기.</li>
+      </ul>
+    </div>
     <div class="photos">
       <figure><img src="img/arimura.jpg" alt="아리무라 용암 전망소 정자 뒤로 연기 나는 사쿠라지마" loading="lazy"><figcaption>아리무라 용암 전망소<span>사진: 鹿児島市 · CC BY 4.0</span></figcaption></figure>
       <figure><img src="img/yunohira.jpg" alt="유노히라 전망소에서 본 사쿠라지마 산정" loading="lazy"><figcaption>유노히라 전망소<span>사진: Christophe95 · CC BY-SA 4.0</span></figcaption></figure>
@@ -352,7 +380,14 @@ footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
 
   <article class="day">
     <div class="day-top"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c-3 0-6 1-7 3h14c-1-2-4-3-7-3zM4 9c1-1.5 4-2 8-2s7 .5 8 2c-2 1-5 1.2-8 1.2S6 10 4 9zm2 4c2-1 4-1.2 6-1.2s4 .2 6 1.2c-2 1-4 1-6 1s-4 0-6-1z" fill="currentColor"/><rect x="11" y="14" width="2" height="7" fill="currentColor"/></svg><span class="date">11/2 월</span><h3>센간엔 · 시로야마 · 밤 축제</h3><span class="stay">숙박: 가고시마 중앙역</span></div>
-    <div class="wx" data-date="2026-11-02"><b>맑고 때때로 흐림</b><span class="alt">다른 예보는 비 80% · 우산 챙기기</span></div>
+    <div class="wx" data-date="2026-11-02"><b>이슬비</b><span class="num">24℃ / 14℃ · 비 67%</span><span class="alt">10/29 Open-Meteo 예보 · 우산 챙기기</span><span class="wind">체감 14~24℃ · 바람 최대 5m/s(돌풍 11m/s) · 바람 느껴짐, 밤엔 겉옷 지퍼까지</span></div>
+    <div class="wear"><b>옷차림</b>낮엔 걷느라 덥고, 밤 축제는 서서 추운 날
+      <ul>
+        <li><strong>낮(센간엔·시로야마):</strong> 정원과 전망대 오르막을 걷다 보면 땀이 납니다. 반팔 + 벗기 쉬운 얇은 긴팔, 편한 운동화.</li>
+        <li><strong>비:</strong> 10/29 예보로 비 가능성이 가장 높은 날입니다. 우산과 방수 바람막이를 함께 챙기면 바람 불 때도 쓸 수 있어요.</li>
+        <li><strong>밤 축제(18:50~20:20):</strong> 1시간 넘게 서서 보는 데다 바람까지 불면 체감은 15℃ 아래. 아이들은 후드집업 위에 바람막이, 또는 경량패딩 조끼. 숙소에서 한 번 갈아입고 나가는 걸 권합니다.</li>
+      </ul>
+    </div>
     <div class="photos">
       <figure><img src="img/senganen.jpg" alt="센간엔 정원의 소나무와 정자" loading="lazy"><figcaption>센간엔<span>사진: STA3816 · CC BY-SA 3.0</span></figcaption></figure>
       <figure><img src="img/shiroyama.jpg" alt="시로야마 전망대에서 본 가고시마 시내와 사쿠라지마" loading="lazy"><figcaption>시로야마 전망대<span>사진: Jody McIntyre · CC BY-SA 2.0</span></figcaption></figure>
@@ -372,7 +407,13 @@ footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
 
   <article class="day">
     <div class="day-top"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="10" y="1" width="4" height="3" fill="currentColor"/><rect x="5" y="4" width="14" height="15" rx="6" fill="currentColor"/><path d="M6 9h12M6 14h12" stroke="var(--surface)" stroke-width="1.5"/><rect x="10" y="19" width="4" height="3" fill="currentColor"/></svg><span class="date">11/3 화</span><h3>오하라 마쓰리 · 과학관 · 마지막 쇼핑</h3><span class="tag">일본 공휴일 · 혼잡</span><span class="stay">숙박: 가고시마 중앙역</span></div>
-    <div class="wx" data-date="2026-11-03"><b>흐리고 때때로 맑음</b><span class="num">비 20%</span><span class="alt">다른 예보는 비 80% · 비 오면 아래 대안대로</span></div>
+    <div class="wx" data-date="2026-11-03"><b>흐림·안개</b><span class="num">23℃ / 14℃ · 비 2%</span><span class="alt">10/29 Open-Meteo 예보 · 비 오면 아래 대안대로</span><span class="wind">체감 14~23℃ · 바람 최대 3m/s(돌풍 7m/s) · 바람 약함</span></div>
+    <div class="wear"><b>옷차림</b>햇볕과 그늘의 차이가 큰 날
+      <ul>
+        <li><strong>오전 퍼레이드:</strong> 길가에 오래 서 있으니 해 드는 자리는 따갑고 건물 그늘은 서늘합니다. 모자·선크림, 얇은 긴팔은 허리에 묶어 두기.</li>
+        <li><strong>오후 과학관·쇼핑:</strong> 실내라 반팔이면 충분. 겉옷은 접어서 가방에.</li>
+      </ul>
+    </div>
     <ol class="tl">
       <li><span class="t">10:00</span><div class="d">덴몬칸 전차거리에서 본 축제 퍼레이드 관람<p>전차 운행이 바뀔 수 있어 중앙역에서 걸어가는 게 확실(20~25분). 자리는 일찍 잡을수록 좋습니다.</p></div></li>
       <li><span class="t">11:30</span><div class="d">이른 점심<p>축제날이라 12시 이후엔 줄이 길어집니다.</p></div></li>
@@ -387,7 +428,13 @@ footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
 
   <article class="day">
     <div class="day-top"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v4h-2V5h-2v2H9z" fill="currentColor"/><rect x="4" y="7" width="16" height="13" rx="2" fill="currentColor"/><path d="M9 7v13M15 7v13" stroke="var(--surface)" stroke-width="1.5"/><circle cx="7" cy="21.5" r="1.3" fill="currentColor"/><circle cx="17" cy="21.5" r="1.3" fill="currentColor"/></svg><span class="date">11/4 수</span><h3>차로 공항 · 귀국</h3></div>
-    <div class="wx" data-date="2026-11-04"><b>흐린 뒤 비</b><span class="num">비 60%</span><span class="alt">비 오면 오전 산책 대신 역 안에서 쉬기 · 접이식 우산은 손가방에</span></div>
+    <div class="wx" data-date="2026-11-04"><b>약한 이슬비</b><span class="num">23℃ / 15℃ · 비 12%</span><span class="alt">10/29 Open-Meteo 예보 · 접이식 우산은 손가방에</span><span class="wind">체감 14~21℃ · 바람 최대 5m/s(돌풍 12m/s) · 바람 느껴짐</span></div>
+    <div class="wear"><b>옷차림</b>가고시마는 가볍게, 인천 밤은 따뜻하게
+      <ul>
+        <li><strong>가고시마:</strong> 차로 움직이는 날이라 반팔 + 얇은 긴팔이면 됩니다. 비 대비로 우산은 차 안이 아니라 손에.</li>
+        <li><strong>인천 도착(19:10):</strong> 11월 초 한국 밤은 가고시마보다 10℃쯤 낮을 수 있습니다(추정). 첫날 입고 온 경량패딩·후드집업을 기내 가방에 넣어 두고 내리기 전에 입히세요.</li>
+      </ul>
+    </div>
     <ol class="tl">
       <li><span class="t">10:00</span><div class="d">체크아웃 → 캐리어를 차에 싣고 출발<p>짐은 차에 그대로 두고 다닙니다. 코인로커·공항버스가 필요 없어요.</p></div></li>
       <li><span class="t">10:30</span><div class="d">가볍게 시내 한 바퀴 (선택)<p>차로 가까운 곳(시로야마 전망대 재방문 등)이나 빠뜨린 장보기. 짐이 실려 있으니 귀중품은 몸에.</p></div></li>
@@ -405,14 +452,6 @@ footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
   <div class="sec-head"><h2>위치정보</h2><span class="muted small">숙소에서 걸어서 갈 수 있는 1km 안팎만 모았습니다. 거리는 직선이 아니라 <b>실제로 걷는 길</b> 기준이고, 시간은 1분에 약 75m로 잡았어요(아이 동반·캐리어면 더 걸림). 이름을 누르면 구글 지도로 열립니다. 고쿠부 숙소에서 가장 가까운 역(JR 국분역)은 2.1km라 걸어가기엔 멀어 뺐습니다.</span></div>
   <div class="where" id="whereList"></div>
   <p class="small muted">지도·가게 위치: © OpenStreetMap contributors (2026-10-23 조회). 영업시간·폐업 여부는 방문 전 지도 앱에서 확인하세요.</p>
-</section>
-
-<!-- 준비물 -->
-<section id="pack">
-  <div class="sec-head"><h2>준비물</h2><span class="muted small">체크하면 이 기기에만 저장됩니다. 엄마 두 분은 각자 휴대폰에서 체크하세요.</span></div>
-  <div class="progress"><span class="num" id="packCount">0 / 0</span><div class="bar"><i id="packBar"></i></div><button class="reset" id="packReset" type="button">초기화</button></div>
-  <span class="small muted saved" id="packSaved"></span>
-  <div class="checks" id="checks"></div>
 </section>
 
 <!-- 비용 -->
@@ -494,74 +533,6 @@ footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
 
 <script>
 (function(){
-  var KEY='kgs-trip-pack-v1';
-  var pack={
-    '서류·돈':['여권 6개 (유효기간 확인)','국제운전면허증 + 한국 운전면허증 (운전할 엄마 모두)','Visit Japan Web 등록 (가족 전원)','렌트·숙소 예약 확인서 캡처','엔화 현금 (작은 가게·족욕·버스용) + 해외결제 카드','동전 지갑 (동전이 많이 생김)','영문 가족관계증명서 (선택)','여행자보험 가입'],
-    '이동·통신':['구글 지도 오프라인 저장 (기리시마·사쿠라지마)','CUTE 1일권 (11/3용, myroute 앱 또는 현장 구매)','eSIM 또는 포켓와이파이'],
-    '옷 (낮 20℃ 안팎, 아침저녁 쌀쌀)':['얇은 겉옷·바람막이 1인 1벌','긴바지 + 반팔/긴팔 레이어드','편한 운동화 (용암길·계단 많음)','잠옷','여벌 양말 넉넉히 (족욕 후 갈아신기)','접이식 우산 or 우비'],
-    '화산·바깥 활동':['마스크 (화산재)','모자·선글라스','작은 수건 4~6장 (족욕용)','물티슈·손소독제','선크림'],
-    '아이들':['상비약: 해열제(아이용)·멀미약·밴드·소화제','체온계','차·비행기용 간식, 보드게임·색칠놀이','아이들 손목 연락처 메모','작은 배낭 (각자 물병·간식)'],
-    '전자·기타':['110V 돼지코 2~3개 + 멀티탭','보조배터리 (기내 반입만)','지퍼백·접이식 장바구니','캐리어 여유 공간 (기념품)']
-  };
-  // 체크 상태는 localStorage와 쿠키 두 곳에 저장 (한쪽이 막히거나 지워져도 복구)
-  var ALL=[];Object.keys(pack).forEach(function(g){ALL=ALL.concat(pack[g])});
-  var COOKIE='kgsPack';
-  function readCookie(){var m=document.cookie.match(new RegExp('(?:^|; )'+COOKIE+'=([^;]*)'));return m?decodeURIComponent(m[1]):null}
-  function load(){
-    var s=null;
-    try{var raw=localStorage.getItem(KEY);if(raw)s=JSON.parse(raw)}catch(e){}
-    if(!s||!Object.keys(s).length){
-      var c=readCookie();
-      if(c){s={};c.split('.').forEach(function(i){var it=ALL[+i];if(it)s[it]=1})}
-    }
-    return s||{};
-  }
-  var state=load(),saved={ls:false,ck:false};
-  function save(){
-    try{localStorage.setItem(KEY,JSON.stringify(state));saved.ls=localStorage.getItem(KEY)!==null}catch(e){saved.ls=false}
-    try{
-      var ids=ALL.map(function(it,i){return state[it]?i:-1}).filter(function(i){return i>=0}).join('.');
-      document.cookie=COOKIE+'='+encodeURIComponent(ids)+'; max-age=7776000; path=/; SameSite=Lax';
-      saved.ck=readCookie()!==null;
-    }catch(e){saved.ck=false}
-    var el=document.getElementById('packSaved');
-    if(el)el.textContent=(saved.ls||saved.ck)?'이 기기에 저장됨':'저장 안 됨 · 시크릿 모드면 일반 창으로 열어주세요';
-    if(el)el.classList.toggle('bad',!(saved.ls||saved.ck));
-  }
-  var host=document.getElementById('checks'), total=0, idx=0;
-  Object.keys(pack).forEach(function(g){
-    var box=document.createElement('div');box.className='group';
-    var h=document.createElement('h3');h.textContent=g;box.appendChild(h);
-    pack[g].forEach(function(item){
-      var id='pk'+(idx++);total++;
-      var lab=document.createElement('label');lab.setAttribute('for',id);
-      var cb=document.createElement('input');cb.type='checkbox';cb.id=id;cb.checked=!!state[item];
-      var sp=document.createElement('span');sp.textContent=item;
-      lab.appendChild(cb);lab.appendChild(sp);
-      if(cb.checked)lab.classList.add('done');
-      cb.addEventListener('change',function(){if(cb.checked)state[item]=1;else delete state[item];lab.classList.toggle('done',cb.checked);save();prog()});
-      box.appendChild(lab);
-    });
-    host.appendChild(box);
-  });
-  function prog(){
-    var n=host.querySelectorAll('input:checked').length;
-    document.getElementById('packCount').textContent=n+' / '+total;
-    document.getElementById('packBar').style.width=(n/total*100)+'%';
-  }
-  // 초기화는 두 번 눌러야 실행 (실수로 다 지우지 않게)
-  var resetBtn=document.getElementById('packReset'),armed=null;
-  resetBtn.addEventListener('click',function(){
-    if(!armed){
-      resetBtn.textContent='한 번 더 누르면 전부 해제';resetBtn.classList.add('armed');
-      armed=setTimeout(function(){armed=null;resetBtn.textContent='초기화';resetBtn.classList.remove('armed')},3000);
-      return;
-    }
-    clearTimeout(armed);armed=null;resetBtn.textContent='초기화';resetBtn.classList.remove('armed');
-    state={};save();host.querySelectorAll('input').forEach(function(c){c.checked=false;c.parentNode.classList.remove('done')});prog();
-  });
-  prog();save();
-
   // 비용 (엔, 1인 기준): [항목, 근거, 성인[최소,최대], 초등[최소,최대], 미취학[최소,최대]]
   var cost=[
     ['아침 ×4','편의점·카페 (숙소 조식 포함이면 0)',[2400,4000],[1600,2800],[1600,2800]],
@@ -684,12 +655,19 @@ footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
     ]]
   ];
   // 날짜별 날씨: Open-Meteo에서 불러오고, 실패하면 정적 문구 유지
+  // 바람 세기 한 줄: 평균 최대풍속 기준(4m/s 미만 약함, 7m/s 이상 강함)
+  function windLine(d,i){
+    var w=d.wind_speed_10m_max[i],g=d.wind_gusts_10m_max[i];
+    if(w==null)return '';
+    var lv=w<4?'바람 약함':(w<7?'바람 느껴짐 · 밤엔 겉옷 지퍼까지':'바람 강함 · 페리·전망대 체감 크게 떨어짐');
+    return '<span class="wind">체감 '+Math.round(d.apparent_temperature_min[i])+'~'+Math.round(d.apparent_temperature_max[i])+'℃ · 바람 최대 '+Math.round(w)+'m/s(돌풍 '+Math.round(g)+'m/s) · '+lv+'</span>';
+  }
   var WMO={0:'맑음',1:'대체로 맑음',2:'구름 조금',3:'흐림',45:'안개',48:'안개',51:'약한 이슬비',53:'이슬비',55:'이슬비',61:'약한 비',63:'비',65:'강한 비',80:'소나기',81:'소나기',82:'강한 소나기',95:'뇌우',96:'뇌우',99:'뇌우'};
   (function(){
     var boxes=[].slice.call(document.querySelectorAll('.wx[data-date]'));
     if(!boxes.length||!window.fetch)return;
     var url='https://api.open-meteo.com/v1/forecast?latitude=31.58&longitude=130.54&timezone=Asia%2FTokyo'+
-      '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,relative_humidity_2m_mean'+
+      '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,relative_humidity_2m_mean,apparent_temperature_max,apparent_temperature_min,wind_speed_10m_max,wind_gusts_10m_max&wind_speed_unit=ms'+
       '&start_date=2026-10-31&end_date=2026-11-04';
     var tripP=fetch(url).then(function(r){if(!r.ok)throw r.status;return r.json()});
     // 지금 시흥 날씨와 여행 기간 가고시마 예보 비교
@@ -712,7 +690,7 @@ footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
         var i=d.time.indexOf(b.getAttribute('data-date'));
         if(i<0||d.temperature_2m_max[i]==null)return;
         var w=WMO[d.weather_code[i]]||'예보';
-        b.innerHTML='<b>'+w+'</b><span class="num">'+Math.round(d.temperature_2m_max[i])+'℃ / '+Math.round(d.temperature_2m_min[i])+'℃ · 습도 '+Math.round(d.relative_humidity_2m_mean[i])+'% · 비 '+Math.round(d.precipitation_probability_max[i])+'%</span><span class="alt">Open-Meteo 예보 · '+stamp+' 불러옴</span>';
+        b.innerHTML='<b>'+w+'</b><span class="num">'+Math.round(d.temperature_2m_max[i])+'℃ / '+Math.round(d.temperature_2m_min[i])+'℃ · 습도 '+Math.round(d.relative_humidity_2m_mean[i])+'% · 비 '+Math.round(d.precipitation_probability_max[i])+'%</span><span class="alt">Open-Meteo 예보 · '+stamp+' 불러옴</span>'+windLine(d,i);
       });
     }).catch(function(){});
   })();
@@ -765,6 +743,7 @@ footer{padding-top:40px;font-size:13px;color:var(--muted);display:grid;gap:6px}
   }).join('');
 })();
 </script>
+
 
 
 </body>
